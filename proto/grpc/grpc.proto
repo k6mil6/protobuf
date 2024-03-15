@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package grpc;
+
+option go_package = "k6mil6.grpc.v1;grpcv1";
+
+service GrpcService {
+  rpc GetKlineses(GetKlinesRequest) returns (GetKlinesResponse);
+}
+
+message GetKlinesRequest {
+  string symbol = 1;
+  string interval = 2;
+  int64 startTime = 3;
+  int64 endTime = 4;
+  string timeZone = 5;
+  int64 limit = 6;
+}
+
+message GetKlinesResponse {
+  int64 openTime = 1;
+  string openPrice = 2;
+  string highPrice = 3;
+  string lowPrice = 4;
+  string closePrice = 5;
+  int64 volume = 6;
+  int64 closeTime = 7;
+  string quoteAssetVolume = 8;
+  int64 numberOfTrades = 9;
+  string takerBuyBaseAssetVolume = 10;
+  string takerBuyQuoteAssetVolume = 11;
+  string ignore = 12;
+}
