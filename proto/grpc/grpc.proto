@@ -23,15 +23,15 @@ message GetKlinesResponse {
 
 message Kline {
   int64 openTime = 1;
-  float openPrice = 2;
-  float highPrice = 3;
-  float lowPrice = 4;
-  float closePrice = 5;
-  int64 volume = 6;
+  double openPrice = 2;
+  double highPrice = 3;
+  double lowPrice = 4;
+  double closePrice = 5;
+  double volume = 6;
   int64 closeTime = 7;
-  float quoteAssetVolume = 8;
+  double quoteAssetVolume = 8;
   int64 numberOfTrades = 9;
-  float takerBuyBaseAssetVolume = 10;
-  float takerBuyQuoteAssetVolume = 11;
+  double takerBuyBaseAssetVolume = 10;
+  double takerBuyQuoteAssetVolume = 11;
   string ignore = 12;
 }
