@@ -14,7 +14,7 @@ message GetKlinesRequest {
   int64 startTime = 3;
   int64 endTime = 4;
   string timeZone = 5;
-  int64 limit = 6;
+  int32 limit = 6;
 }
 
 message GetKlinesResponse {
