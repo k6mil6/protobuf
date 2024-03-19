@@ -19,14 +19,14 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	GrpcService_GetKlineses_FullMethodName = "/grpc.GrpcService/GetKlineses"
+	GrpcService_GetKlines_FullMethodName = "/grpc.GrpcService/GetKlines"
 )
 
 // GrpcServiceClient is the client API for GrpcService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type GrpcServiceClient interface {
-	GetKlineses(ctx context.Context, in *GetKlinesRequest, opts ...grpc.CallOption) (*GetKlinesResponse, error)
+	GetKlines(ctx context.Context, in *GetKlinesRequest, opts ...grpc.CallOption) (*GetKlinesResponse, error)
 }
 
 type grpcServiceClient struct {
@@ -37,9 +37,9 @@ func NewGrpcServiceClient(cc grpc.ClientConnInterface) GrpcServiceClient {
 	return &grpcServiceClient{cc}
 }
 
-func (c *grpcServiceClient) GetKlineses(ctx context.Context, in *GetKlinesRequest, opts ...grpc.CallOption) (*GetKlinesResponse, error) {
+func (c *grpcServiceClient) GetKlines(ctx context.Context, in *GetKlinesRequest, opts ...grpc.CallOption) (*GetKlinesResponse, error) {
 	out := new(GetKlinesResponse)
-	err := c.cc.Invoke(ctx, GrpcService_GetKlineses_FullMethodName, in, out, opts...)
+	err := c.cc.Invoke(ctx, GrpcService_GetKlines_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -50,7 +50,7 @@ func (c *grpcServiceClient) GetKlineses(ctx context.Context, in *GetKlinesReques
 // All implementations must embed UnimplementedGrpcServiceServer
 // for forward compatibility
 type GrpcServiceServer interface {
-	GetKlineses(context.Context, *GetKlinesRequest) (*GetKlinesResponse, error)
+	GetKlines(context.Context, *GetKlinesRequest) (*GetKlinesResponse, error)
 	mustEmbedUnimplementedGrpcServiceServer()
 }
 
@@ -58,8 +58,8 @@ type GrpcServiceServer interface {
 type UnimplementedGrpcServiceServer struct {
 }
 
-func (UnimplementedGrpcServiceServer) GetKlineses(context.Context, *GetKlinesRequest) (*GetKlinesResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetKlineses not implemented")
+func (UnimplementedGrpcServiceServer) GetKlines(context.Context, *GetKlinesRequest) (*GetKlinesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetKlines not implemented")
 }
 func (UnimplementedGrpcServiceServer) mustEmbedUnimplementedGrpcServiceServer() {}
 
@@ -74,20 +74,20 @@ func RegisterGrpcServiceServer(s grpc.ServiceRegistrar, srv GrpcServiceServer) {
 	s.RegisterService(&GrpcService_ServiceDesc, srv)
 }
 
-func _GrpcService_GetKlineses_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _GrpcService_GetKlines_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetKlinesRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(GrpcServiceServer).GetKlineses(ctx, in)
+		return srv.(GrpcServiceServer).GetKlines(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: GrpcService_GetKlineses_FullMethodName,
+		FullMethod: GrpcService_GetKlines_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(GrpcServiceServer).GetKlineses(ctx, req.(*GetKlinesRequest))
+		return srv.(GrpcServiceServer).GetKlines(ctx, req.(*GetKlinesRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -100,8 +100,8 @@ var GrpcService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*GrpcServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "GetKlineses",
-			Handler:    _GrpcService_GetKlineses_Handler,
+			MethodName: "GetKlines",
+			Handler:    _GrpcService_GetKlines_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
