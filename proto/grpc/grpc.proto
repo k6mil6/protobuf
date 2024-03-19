@@ -18,6 +18,10 @@ message GetKlinesRequest {
 }
 
 message GetKlinesResponse {
+  repeated Kline klines = 1;
+}
+
+message Kline {
   int64 openTime = 1;
   string openPrice = 2;
   string highPrice = 3;
